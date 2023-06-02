@@ -5,19 +5,25 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    private GameManager instance;
 
-    public GameManager instance;
-
-    [SerializeField] private TextMeshProUGUI interactIcon;
+    [SerializeField] private TextMeshProUGUI icons;
 
     private void Awake()
     {
-        instance = this;
-        interactIcon.gameObject.SetActive(false);
+        if(instance != null && instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            instance = this;
+            icons.gameObject.SetActive(false);
+        }
     }
 
     public void OnHovering()
     {
-
+        icons.gameObject.SetActive(true);
     }
 }

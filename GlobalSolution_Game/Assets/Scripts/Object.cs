@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class Object : MonoBehaviour
 {
-
+    [SerializeField] private string message;
     private Transform itemTransform;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +28,7 @@ public class Object : MonoBehaviour
             if (hit.collider.gameObject.tag == "InteractiveObject")
             {
                 Debug.Log("Hovering");
+                TextBalloonManager.instance.SetAndShowBalloon(message);
             }
         }
     }
