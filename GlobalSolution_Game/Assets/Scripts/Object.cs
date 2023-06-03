@@ -5,18 +5,22 @@ using UnityEngine;
 public class Object : MonoBehaviour
 {
     [SerializeField] private string message;
-    private Transform itemTransform;
+    private bool hovering;
+    private CursorManager cursorManager;
+    //private Transform itemTransform;
 
     // Start is called before the first frame update
     void Start()
     {
-        itemTransform = GetComponent<Transform>();
+        hovering = false;
+        //itemTransform = GetComponent<Transform>();
     }
 
     // Update is called once per frame
     void Update()
     {
         RayCastObject();
+        CheckHovering();
     }
 
     private void RayCastObject()
@@ -28,8 +32,22 @@ public class Object : MonoBehaviour
             if (hit.collider.gameObject.tag == "InteractiveObject")
             {
                 Debug.Log("Hovering");
+                hovering = true;
                 TextBalloonManager.instance.SetAndShowBalloon(message);
             }
+            else
+            {
+                hovering = false;
+            }
+        }
+    }
+
+    private void CheckHovering()
+    {
+        while(hovering)
+        {
+            cursorManager.instance.CursorInteract();
+            print(hovering);
         }
     }
 

@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     private GameManager instance;
 
     [SerializeField] private TextMeshProUGUI icons;
+    private CursorManager cursor;
 
     private void Awake()
     {

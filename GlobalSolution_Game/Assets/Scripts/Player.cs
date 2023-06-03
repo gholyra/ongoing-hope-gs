@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
 
 
     [SerializeField] private float velocity;
-    [SerializeField] private float jumpForce;
+    //[SerializeField] private float jumpForce;
     private bool isOnFloor = false;
 
     // Start is called before the first frame update
@@ -33,10 +33,10 @@ public class Player : MonoBehaviour
         //float moveY = Input.GetAxisRaw("Vertical") * velocity * Time.deltaTime;
         playerTransform.Translate(new Vector3(moveX, 0));
 
-        if (Input.GetButtonDown("Jump") && isOnFloor)
-        {
-            rigidBody.AddForce(Vector2.up * jumpForce);
-        }
+        //if (Input.GetButtonDown("Jump") && isOnFloor)
+        //{
+        //    rigidBody.AddForce(Vector2.up * jumpForce);
+        //}
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
