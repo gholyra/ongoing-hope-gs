@@ -1,15 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
 
-public class Dialogue : MonoBehaviour
+public class PauseMenu : MonoBehaviour
 {
-
-    [SerializeField] private TextMeshProUGUI textCpmponent;
-    [SerializeField] private string[] lines;
-    [SerializeField] private float textSpeed;
-
     // Start is called before the first frame update
     void Start()
     {

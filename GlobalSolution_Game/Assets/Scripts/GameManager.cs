@@ -5,9 +5,10 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    private GameManager instance;
+    public static GameManager instance;
 
     [SerializeField] private TextMeshProUGUI icons;
+    private CursorManager cursor;
 
     private void Awake()
     {
@@ -20,6 +21,11 @@ public class GameManager : MonoBehaviour
             instance = this;
             icons.gameObject.SetActive(false);
         }
+    }
+
+    private void Start()
+    {
+        
     }
 
     public void OnHovering()
