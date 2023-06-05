@@ -5,10 +5,10 @@ using UnityEngine;
 public class CursorManager : MonoBehaviour
 {
 
-    public CursorManager instance;
+    public static CursorManager instance;
 
-    [SerializeField] private Texture2D cursorTexture;
-    // Start is called before the first frame update
+    [SerializeField] private Texture2D interactTexture;
+    [SerializeField] private Texture2D defaultTexture;
 
     private void Awake()
     {
@@ -22,14 +22,20 @@ public class CursorManager : MonoBehaviour
         }
     }
 
+    // Start is called before the first frame update
     private void Start()
     {
-        
+        CursorDefault();
     }
 
     public void CursorInteract()
     {
-        Cursor.SetCursor(cursorTexture, new Vector2(10, 10), CursorMode.Auto);
+        Cursor.SetCursor(interactTexture, new Vector2(10, 10), CursorMode.Auto);
+    }
+
+    public void CursorDefault()
+    {
+        Cursor.SetCursor(defaultTexture, new Vector2(10, 10), CursorMode.Auto);
     }
 
 }
