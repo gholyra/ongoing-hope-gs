@@ -53,6 +53,7 @@ public class Player : MonoBehaviour
         {
             if(Input.GetMouseButtonDown(0))
             {
+                Debug.Log("Parou de falar");
                 StartCoroutine(DisableTalkSettings());
             }
         }

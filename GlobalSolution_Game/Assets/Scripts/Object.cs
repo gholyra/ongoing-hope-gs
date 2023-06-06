@@ -32,14 +32,14 @@ public class Object : MonoBehaviour
         RaycastHit2D hit = Physics2D.Raycast(GetMousePosition(), -Vector2.up, LayerMask.GetMask("Object"));
         if (hit.collider != null)
         {
-            if (hit.collider.gameObject.CompareTag("InteractiveObject"))
+            if (hit.collider.gameObject.CompareTag("InteractiveObject") && !TextBalloonManager.instance.GetIsBalloonActive())
             {
                 Debug.Log("Hovering");
                 hovering = true;
                 canClick = true;
             }
         }
-        else if(hit.collider == null || !hit.collider.gameObject.CompareTag("InteractiveObject"))
+        else if (hit.collider == null || !hit.collider.gameObject.CompareTag("InteractiveObject"))
         {
             hovering = false;
             canClick = false;
@@ -48,7 +48,7 @@ public class Object : MonoBehaviour
 
     private void CheckCursor()
     {
-        if(hovering)
+        if (hovering)
         {
             CursorManager.instance.CursorInteract();
         }
@@ -60,16 +60,15 @@ public class Object : MonoBehaviour
 
     private void OnClick()
     {
-        if(canClick)
+
+        if (Input.GetMouseButtonDown(0) && !TextBalloonManager.instance.GetIsBalloonActive() && canClick)
         {
-            if(Input.GetMouseButtonDown(0) && !TextBalloonManager.instance.GetIsBalloonActive())
-            {
-                StartCoroutine(EnableTalkSettings());
-                canClick = false;
-                Debug.Log(canClick);
-            }
-            Debug.Log(canClick);
+            Debug.Log("Começou a falar");
+            StartCoroutine(EnableTalkSettings());
+            canClick = false;
+            Debug.Log("Canclik: " + canClick);
         }
+
     }
 
     private IEnumerator EnableTalkSettings()
