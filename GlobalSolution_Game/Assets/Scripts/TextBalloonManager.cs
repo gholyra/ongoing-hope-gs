@@ -33,6 +33,8 @@ public class TextBalloonManager : MonoBehaviour
         Cursor.visible = true;
         gameObject.SetActive(false);
         isBaloonActive = false;
+        textComponent.text = string.Empty;
+        StartDialogue();
     }
 
     // Update is called once per frame
@@ -46,11 +48,10 @@ public class TextBalloonManager : MonoBehaviour
             }
             else
             {
-                StopCoroutine(TypeLine());
+                StopAllCoroutines();
                 textComponent.text = lines[index];
             }
         }
-
     }
 
     private void StartDialogue()
@@ -73,7 +74,6 @@ public class TextBalloonManager : MonoBehaviour
         if(index < lines.Length - 1)
         {
             index++;
-            textComponent.text = string.Empty;
             StartCoroutine(TypeLine());
         }
         else

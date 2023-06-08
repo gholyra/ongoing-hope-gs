@@ -61,12 +61,12 @@ public class CameraManager : MonoBehaviour
     {
         if(isTalking)
         {
-            camera.orthographicSize = Mathf.Lerp(camera.orthographicSize, 3.5f, .8f * Time.deltaTime);
+            camera.orthographicSize = Mathf.Lerp(camera.orthographicSize, 3f, .8f * Time.deltaTime);
             SetYOffset(0);
         }
         else
         {
-            camera.orthographicSize = Mathf.Lerp(camera.orthographicSize, 5f, .8f * Time.deltaTime);
+            camera.orthographicSize = Mathf.Lerp(camera.orthographicSize, 4f, .8f * Time.deltaTime);
             SetYOffset(2);
         }
     }
